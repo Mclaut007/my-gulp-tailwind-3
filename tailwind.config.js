@@ -30,6 +30,22 @@ module.exports = {
     //   "circular-std-medium": "CircularStd-Medium, sans-serif",
     //   "circular-std-medium-italic": "CircularStd-MediumItalic, sans-serif",
     // },
+    // Настраиваем размеры шрифтов. Мы повторяем то, что идет в tailwind по умолчанию в данном случае. Делаем это для того, чтобы в утилитах размера шрифта не задавался line-height. Иначе нам на каждом брейкпойнте, где мы меняем размер шрифта, придется на html-элементах прописывать нужный нам leading. Потому что при смене размера шрифта будет прописываться и line-height.
+    fontSize: {
+      xs: "0.75rem" /* 12px */,
+      sm: "0.875rem" /* 14px */,
+      base: "1rem" /* 16px */,
+      lg: "1.125rem" /* 18px */,
+      xl: "1.25rem" /* 20px */,
+      "2xl": "1.5rem" /* 24px */,
+      "3xl": "1.875rem" /* 30px */,
+      "4xl": "2.25rem" /* 36px */,
+      "5xl": "3rem" /* 48px */,
+      "6xl": "3.75rem" /* 60px */,
+      "7xl": "4.5rem" /* 72px */,
+      "8xl": "6rem" /* 96px */,
+      "9xl": "8rem" /* 128px */,
+    },
     container: {
       padding: "0.9375rem", // 15px
       center: true,
