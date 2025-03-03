@@ -81,3 +81,11 @@
 // import createYandexMap from "./modules/yandex-map";
 
 // createYandexMap();
+
+// ========= Темная тема  ========= //
+
+// Меням тему на странице, кликая по кнопкам. Будут темная, светлая темы и тема ОС.
+
+// import changeThemeColor from "./modules/dark-mode";
+
+// changeThemeColor();
