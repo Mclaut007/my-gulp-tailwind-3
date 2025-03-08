@@ -6,7 +6,7 @@ const replace = require("gulp-replace");
 const fileInclude = require("gulp-file-include");
 const htmlclean = require("gulp-htmlclean");
 const autoprefixer = require("gulp-autoprefixer");
-const csso = require("gulp-csso");
+// const csso = require("gulp-csso");
 const webpCss = require("gulp-webp-css");
 const browserSync = require("browser-sync").create();
 const clean = require("gulp-clean");
@@ -20,6 +20,9 @@ const babel = require("gulp-babel");
 const imagemin = require("gulp-imagemin");
 const webp = require("gulp-webp");
 const changed = require("gulp-changed");
+// Поменяем csso на cssnano (плагин postcss). Потому что csso при минификации удаляет медиазапросы, вложенные в классы.
+const postcss = require("gulp-postcss");
+const cssnano = require("cssnano");
 
 gulp.task("clean:docs", function (done) {
   if (fs.existsSync("./docs/")) {
@@ -61,6 +64,7 @@ gulp.task("html:docs", function () {
 });
 
 gulp.task("css:docs", function () {
+  const plugins = [cssnano()];
   return (
     gulp
       .src(["./src/css/**/*.css", "!./src/css/input.css"])
@@ -68,7 +72,8 @@ gulp.task("css:docs", function () {
       .pipe(plumber(plumberNotify("CSS")))
       .pipe(autoprefixer())
       // .pipe(groupMedia())
-      .pipe(csso())
+      // .pipe(csso())
+      .pipe(postcss(plugins))
       .pipe(
         replace(
           /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
